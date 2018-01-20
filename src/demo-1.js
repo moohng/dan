@@ -1,5 +1,5 @@
 // import validator from '../lib/validator'
-const validator = require('../dist/validator.min')
+const validator = require('@moohng/validator')
 
 console.log('------', validator);
 

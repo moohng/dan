@@ -2,7 +2,9 @@
   "name": "@moohng/validator",
   "version": "1.0.0",
   "description": "一款简单的字段校验工具",
-  "main": "index.js",
+  "main": "dist/validator.min.js",
+  "module": "index.js",
+  "jsnext": "index.js",
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -c -w",
