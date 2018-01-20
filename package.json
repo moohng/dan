@@ -1,6 +1,6 @@
 {
   "name": "@moohng/validator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "一款简单的字段校验工具",
   "main": "dist/validator.min.js",
   "module": "index.js",
