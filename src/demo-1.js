@@ -1,5 +1,5 @@
 // import validator from '../lib/validator'
-const validator = require('../dist/validator')
+const validator = require('../dist/validator.min')
 
 console.log('------', validator);
 
