@@ -1,8 +1,6 @@
 // import validator from '../lib/validator'
 const validator = require('@moohng/validator')
 
-console.log('------', validator);
-
 const rules = {
   name: {
     alias: '姓名',

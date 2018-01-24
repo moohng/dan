@@ -6,9 +6,9 @@
   version "1.0.0"
   resolved "https://registry.npmjs.org/@comandeer/babel-plugin-banner/-/babel-plugin-banner-1.0.0.tgz#40bcce0bbee084b5b02545a33635d053c248356f"
 
-"@moohng/validator@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/@moohng/validator/-/validator-1.0.0.tgz#f7d7c4c41eda0ee1ebed03b770080adcbd9cd66d"
+"@moohng/validator@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/@moohng/validator/-/validator-1.0.1.tgz#a1df9ec077f606c5b6524f409b41a5106f66bf55"
 
 "@std/esm@^0.19.5":
   version "0.19.7"
