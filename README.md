@@ -15,14 +15,14 @@ $ yarn add @moohng/validator
 这样实现的好处在于：十分灵活、可适用于任何地方、耦合性低、可扩展性强，不仅十分轻量，还能满足大多数的校验场合。
 
 ```js
-const validator = require('@moohng/validator')
+const { validator } = require('@moohng/validator')
 
 // 定义每个字段的校验规则
 const rules = {
   name: {
     alias: '姓名',   // 字段别名，用于默认提示信息的字段名称，省略则为当前字段的 key
     /**
-     * 为空判断：字段为 null、undefined、[]、''、{} 时认为的空
+     * 为空判断：字段为 null、undefined、[]、''、{} 时认为是空
      * required 可为 Boolean 类型或 String 类型，当为字符串时，则表示为空时提示的文本信息，否则为默认提示信息
      */
     required: true,
@@ -54,7 +54,7 @@ const rules = {
  * 校验的结果是一个包含所有校验不通过的字段的提示文本的一个对象
  * 比如：{ name: '请输入姓名', email: '您输入的邮箱不正确' }
  */
-const result = validator.validator({
+const result = validator({
   name: '',
   email: 'ewrwerw@',
   age: 8

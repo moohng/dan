@@ -1,5 +1,5 @@
 // import validator from '../lib/validator'
-const validator = require('@moohng/validator')
+const { validator } = require('@moohng/validator')
 
 const rules = {
   name: {
@@ -12,7 +12,7 @@ const rules = {
   }
 }
 
-const result = validator.validator({
+const result = validator({
   name: '',
   email: 'ewrwerw@'
 }, rules)
