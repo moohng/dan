@@ -4,22 +4,49 @@
 	(factory((global.validator = {})));
 }(this, (function (exports) { 'use strict';
 
-// 校验结果操作方法
-var resultOperation = {
-  hasError: function hasError() {
-    return Object.keys(this).length > 0;
-  },
-  first: function first() {
-    var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
 
-    return Object.values(this)[index];
-  },
-  firstKey: function firstKey() {
-    var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
 
-    return Object.keys(this)[index];
+
+
+
+
+
+
+
+
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
   }
 };
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+
+
+
 
 var defineProperty = function (obj, key, value) {
   if (key in obj) {
@@ -50,6 +77,37 @@ var _extends = Object.assign || function (target) {
   return target;
 };
 
+var Result = function () {
+  function Result() {
+    var errors = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    classCallCheck(this, Result);
+
+    Object.assign(this, errors);
+  }
+
+  createClass(Result, [{
+    key: "hasError",
+    value: function hasError() {
+      return Object.keys(this).length > 0;
+    }
+  }, {
+    key: "first",
+    value: function first() {
+      var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+      return Object.values(this)[index - 1];
+    }
+  }, {
+    key: "firstKey",
+    value: function firstKey() {
+      var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+      return Object.keys(this)[index - 1];
+    }
+  }]);
+  return Result;
+}();
+
 /**
  * 校验函数
  * @param {Object} 要校验的目标对象（包含需要校验的属性值）
@@ -61,7 +119,7 @@ var _extends = Object.assign || function (target) {
  *     alias: 'key的别名，比如：姓名',                   -------- 若无，则默认为key值
  *     required: '为空时要提示的字符串或true(必填)',      -------- 为true则提示默认文字，为字符串时则提示该字符串
  *     pattern: /这里是正则表达式/,                      -------- 正则匹配校验
- *     validator: '自定义校验函数(参数1：当前值，参数2：所有值的对象)'
+ *     validate: '自定义校验函数(参数1：当前值，参数2：所有值的对象)'
  *                                                      -------- 返回 true 则校验通过，false 校验不通过（若返回字符串表示校验"不通过"，并且作为提示信息）
  *     message: '校验不通过的提示文字'                    -------- 校验不通过的提示文字，若无则提示默认文字
  *     trim: @Boolean,默认true                          --------- 是否去掉字符串的首尾空格
@@ -74,40 +132,41 @@ var _extends = Object.assign || function (target) {
  * result.first()       // 获取检验结果的第一个错误提示字符串    ------ 若带参数：指定第几个
  * result.firstKey()    // 获取校验结果的第一个错误字段的key值   ------ 若带参数：指定第几个
  */
-var validator = function validator(target, rules) {
-  var results = Object.keys(rules).reduce(function (errors, key) {
+function validator(target, rules) {
+  var ruleKeys = rules ? Object.keys(rules) : [];
+  if (!ruleKeys.length) return new Result();
+  var results = ruleKeys.reduce(function (errors, key) {
     var value = target[key];
-    var error = false;
-    var _rules$key = rules[key],
-        required = _rules$key.required,
-        pattern = _rules$key.pattern,
-        validator = _rules$key.validator,
-        _rules$key$alias = _rules$key.alias,
-        alias = _rules$key$alias === undefined ? key : _rules$key$alias,
-        _rules$key$message = _rules$key.message,
-        message = _rules$key$message === undefined ? '\u8BF7\u8F93\u5165\u6B63\u786E\u7684' + alias : _rules$key$message,
-        _rules$key$trim = _rules$key.trim,
-        trim = _rules$key$trim === undefined ? true : _rules$key$trim;
+    var tips = null;
+
+    var _ref = rules[key] || {},
+        required = _ref.required,
+        pattern = _ref.pattern,
+        validate = _ref.validate,
+        _ref$alias = _ref.alias,
+        alias = _ref$alias === undefined ? key : _ref$alias,
+        _ref$message = _ref.message,
+        message = _ref$message === undefined ? '\u8BF7\u8F93\u5165\u6B63\u786E\u7684' + alias : _ref$message,
+        _ref$trim = _ref.trim,
+        trim = _ref$trim === undefined ? true : _ref$trim;
+    // 去掉字符串首位空格
+
 
     trim && typeof value === 'string' && (value = value.trim());
-    if (typeof value === 'undefined' || value === null || value.length <= 0 || JSON.stringify(value) === '{}') {
-      required && (error = typeof required === 'string' ? required : '\u8BF7\u8F93\u5165' + alias);
-    } else if (pattern && !pattern.test(value)) {
+    if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) === undefined || value === null || !value.length || JSON.stringify(value) === '{}') {
+      required && (tips = typeof required === 'string' ? required : '\u8BF7\u8F93\u5165' + alias);
+    } else if (pattern && pattern instanceof RegExp && !pattern.test(value)) {
       // 正则校验
-      error = message;
-    } else if (typeof validator === 'function') {
+      tips = message;
+    } else if (typeof validate === 'function') {
       // 自定义校验函数
-      var res = validator(value, target);
-      if (typeof res === 'string') {
-        error = res;
-      } else if (!res) {
-        error = message;
-      }
+      var res = validate(value, target);
+      tips = typeof res === 'string' ? res : !res ? message : null;
     }
-    return error ? _extends({}, errors, defineProperty({}, key, error)) : errors;
+    return tips ? _extends({}, errors, defineProperty({}, key, tips)) : _extends({}, errors);
   }, {});
-  return Object.setPrototypeOf(results, resultOperation);
-};
+  return new Result(results);
+}
 
 /**
  * 错误行为的处理，自定义指令对象

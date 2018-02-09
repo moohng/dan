@@ -42,7 +42,7 @@ const rules = {
      * 若为 false，则校验不通过，提示信息为 message，若 message 不存在，则提示默认信息
      * 若为字符串，则认为校验不通过，并且将该字符串作为提示文本信息
      */
-    validator: (val, target) => {
+    validate: (val, target) => {
       return parseInt(val, 10) > 10 || '年龄必须大于10岁'
     }
   }
@@ -65,13 +65,13 @@ const result = validator({
  * result.hasError()  => 返回校验结果是否有错（只要有一个字段校验不通过，该方法返回 true）
  * result.first()   => 返回校验结果的第一个提示信息（一般对于表单校验，我们可能从上到下提示错误信息）
  * result.firstKey()  => 返回校验结果的第一个字段的 key 值
- * first(1) 和 firstKey(2) 可指定参数，分别返回第 n+1 个结果信息（从0开始计算）
+ * first(1) 和 firstKey(2) 可指定参数，分别返回第 n 个结果信息
  */
 console.log('校验结果，是否有错', result.hasError())
 
 if (result.hasError()) {
   console.log('第1个错误提示', result.first())
-  console.log('第2个错误提示', result.first(1))
+  console.log('第2个错误提示', result.first(2))
 }
 ```
 
