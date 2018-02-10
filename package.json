@@ -1,12 +1,12 @@
 {
   "name": "@moohng/validator",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "一款简单、轻量的字段校验工具",
   "main": "dist/validator.min.js",
-  "module": "index.js",
-  "jsnext": "index.js",
+  "module": "./lib/index.js",
+  "jsnext": "./lib/index.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "NODE_ENV=production rollup -c",
     "watch": "rollup -c -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

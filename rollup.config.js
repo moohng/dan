@@ -53,7 +53,6 @@ export default {
     //   ENV: JSON.stringify(process.env.NODE_ENV || 'development')
     // }),
     (isProduction && uglify()),
-    // uglify(),
     // serve({
     //   open: true, // 是否打开浏览器
     //   contentBase: './',

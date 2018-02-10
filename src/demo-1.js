@@ -1,4 +1,4 @@
-const { validator } = require('../dist/validator')
+const validator = require('../dist/validator.min')
 
 const rules = {
   name: {

@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(factory((global.validator = {})));
-}(this, (function (exports) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.validator = factory());
+}(this, (function () { 'use strict';
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
   return typeof obj;
@@ -168,45 +168,6 @@ function validator(target, rules) {
   return new Result(results);
 }
 
-/**
- * 错误行为的处理，自定义指令对象
- */
-var error = {
-  bind: function bind(el) {
-    el.handler = function (e) {
-      e.currentTarget.style.color = null;
-    };
-    el.addEventListener('click', el.handler);
-  },
-  unbind: function unbind(el) {
-    el.removeEventListener('click', el.handler);
-  },
-  update: function update(el, _ref) {
-    var result = _ref.value,
-        name = _ref.arg;
-
-    if (!result || !result[name]) return;
-    el.style.color = '#ff635b';
-    result[name] = null;
-    if (result.firstKey() === name) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' });
-    }
-  }
-};
-/**
- * 通过mixin的方式扩展Vue组件的自定义指令 v-error
- * 使用模板: <input v-error:key="result" />
- * key 是校验的字段名称，result 是 validate 函数执行的返回结果
- * 且 result 必须是响应式的，可在组件的 data 中定义
- */
-var errorMixin = {
-  directives: { error: error }
-};
-
-exports.validator = validator;
-exports.errorMixin = errorMixin;
-exports.error = error;
-
-Object.defineProperty(exports, '__esModule', { value: true });
+return validator;
 
 })));
