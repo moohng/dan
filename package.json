@@ -6,7 +6,7 @@
   "module": "./lib/index.js",
   "jsnext": "./lib/index.js",
   "scripts": {
-    "build": "NODE_ENV=production rollup -c",
+    "build": "cross-env NODE_ENV=production rollup -c",
     "watch": "rollup -c -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -33,6 +33,7 @@
     "postcss-cssnext": "^3.0.2",
     "postcss-nested": "^3.0.0",
     "postcss-simple-vars": "^4.1.0",
+    "rollup": "^0.68.2",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-babel-minify": "^3.1.2",
     "rollup-plugin-commonjs": "^8.2.6",

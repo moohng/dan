@@ -6,13 +6,19 @@
   version "1.0.0"
   resolved "https://registry.npmjs.org/@comandeer/babel-plugin-banner/-/babel-plugin-banner-1.0.0.tgz#40bcce0bbee084b5b02545a33635d053c248356f"
 
-"@moohng/validator@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@moohng/validator/-/validator-1.0.1.tgz#a1df9ec077f606c5b6524f409b41a5106f66bf55"
-
 "@std/esm@^0.19.5":
   version "0.19.7"
   resolved "https://registry.npmjs.org/@std/esm/-/esm-0.19.7.tgz#8eeab6c54596a92e3557992621c91e8166a19852"
+
+"@types/estree@0.0.39":
+  version "0.0.39"
+  resolved "http://registry.npm.taobao.org/@types/estree/download/@types/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
+  integrity sha1-4Xfmme4bjCLSMXTKqnQiZEOJUJ8=
+
+"@types/node@*":
+  version "10.12.18"
+  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-10.12.18.tgz#1d3ca764718915584fcd9f6344621b7672665c67"
+  integrity sha1-HTynZHGJFVhPzZ9jRGIbdnJmXGc=
 
 acorn-jsx@^3.0.0:
   version "3.0.1"
@@ -2971,6 +2977,14 @@ rollup-pluginutils@^2.0.1:
   dependencies:
     estree-walker "^0.3.0"
     micromatch "^2.3.11"
+
+rollup@^0.68.2:
+  version "0.68.2"
+  resolved "http://registry.npm.taobao.org/rollup/download/rollup-0.68.2.tgz#c26afb5d981ca7a1a32f76087dbde9dad4fcc653"
+  integrity sha1-wmr7XZgcp6GjL3YIfb3p2tT8xlM=
+  dependencies:
+    "@types/estree" "0.0.39"
+    "@types/node" "*"
 
 run-async@^2.2.0:
   version "2.3.0"
