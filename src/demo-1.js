@@ -1,12 +1,12 @@
 const validator = require('../dist/validator.min')
 
 const rules = {
-  name: {
-    alias: '姓名',
-    required: true
-  },
+  name: '姓名',
   email: {
     required: '请输入邮箱哦',
+    // length: 8,
+    min: 8,
+    max: 8,
     // pattern: /\w+@\w+\.com/,
     validate(value) {
       return 'hell打发第三方斯蒂芬是否'
