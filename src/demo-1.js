@@ -14,15 +14,15 @@ const rules = {
   }
 }
 
-const result = validator({
+const errors = validator({
   name: '',
   email: 'ewrwerw@'
 }, rules)
 
-console.log('校验结果对象', result)
-console.log('校验结果，是否有错', result.hasError())
+console.log('校验结果对象', errors)
+console.log('校验结果，是否有错', errors.hasError())
 
-if (result.hasError()) {
-  console.log('第1个错误提示', result.first())
-  console.log('第2个错误提示', result.first(2))
+if (errors.hasError()) {
+  console.log('第1个错误提示', errors.first())
+  console.log('第2个错误提示', errors.first(2))
 }
