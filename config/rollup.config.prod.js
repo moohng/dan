@@ -1,4 +1,5 @@
 import { terser } from 'rollup-plugin-terser'
+import clear from 'rollup-plugin-clear'
 
 import baseConfig from './rollup.config'
 
@@ -8,14 +9,17 @@ export default args => {
     input: 'src/index',
     output: [
       {
-        file: 'dist/validator.min.js',
+        file: 'dist/dan.mini.js',
         format: 'umd',
-        name: 'validator',
+        name: 'dan',
       }
     ],
   }
   config.plugins.push(...[
     terser(),
+    clear({
+      targets: ['dist'],
+    }),
   ])
 
   return config

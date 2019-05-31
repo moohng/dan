@@ -1,10 +1,10 @@
 {
-  "name": "@moohng/validator",
-  "version": "1.3.1",
-  "description": "一款简单、轻量的字段校验工具",
-  "main": "lib/index.js",
+  "name": "@moohng/dan",
+  "version": "1.3.2",
+  "description": "js工具库",
+  "main": "lib/dan.js",
   "module": "src/index.js",
-  "browser": "dist/validator.min.js",
+  "browser": "dist/dan.min.js",
   "scripts": {
     "dev": "rollup -c config/rollup.config.dev.js -w --server",
     "watch": "rollup -c config/rollup.config.dev.js -w",
@@ -13,12 +13,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "validate",
-    "validator"
+    "util",
+    "utils"
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:moohng/validator.git"
+    "url": "git@github.com:moohng/dan.git"
   },
   "author": "Kevin",
   "license": "MIT",
