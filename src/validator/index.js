@@ -32,22 +32,22 @@ export default function validator(target, rules, callback) {
   const ruleKeys = rules ? Object.keys(rules) : []
   if (!ruleKeys.length) return new Errors()
 
-  let results = {}  // 正确结果
-  let errors = {}   // 错误结果
-  for (const key of ruleKeys) {
+  let results = {} // 正确结果
+  let errors = {} // 错误结果
+  ruleKeys.forEach(key => {
     // 规则
     let rule = rules[key] || {}
-    typeof rule === 'boolean' && (rule = { required: rule })
-    typeof rule === 'string' && (rule = { required: true, alias: rule })
+    if (typeof rule === 'boolean') rule = { required: rule }
+    if (typeof rule === 'string') rule = { required: true, alias: rule }
     // 输入值
     let value = target[key]
     const isEmpty = (
-      value === undefined ||
-      value === null ||
-      value === '' ||
-      Number.isNaN(value) ||
-      JSON.stringify(value) === '{}' ||
-      JSON.stringify(value) === '[]'
+      value === undefined
+      || value === null
+      || value === ''
+      || Number.isNaN(value)
+      || JSON.stringify(value) === '{}'
+      || JSON.stringify(value) === '[]'
     )
 
     const {
@@ -62,32 +62,37 @@ export default function validator(target, rules, callback) {
       length = 0,
     } = rule
     // 去掉字符串首位空格
-    trim && typeof value === 'string' && (value = value.trim())
+    if (trim && typeof value === 'string') value = value.trim()
 
     let tips = null
     if (required && isEmpty) {
       tips = typeof required === 'string' ? required : `请输入${alias}`
     } else if (
-      !isEmpty &&
-      (length && value.length !== length) || // 长度校验
-      (min && typeof /^\d+$/.test(value) ? value < min : value.length < min) || // 最小值校验
-      (max && typeof /^\d+$/.test(value) ? value > max : value.length > max) || // 最大值校验
-      (pattern && pattern instanceof RegExp && !pattern.test(value)) // 正则校验
+      (!isEmpty && (length && value.length !== length)) // 长度校验
+      || (min && typeof /^\d+$/.test(value) ? value < min : value.length < min) // 最小值校验
+      || (max && typeof /^\d+$/.test(value) ? value > max : value.length > max) // 最大值校验
+      || (pattern && pattern instanceof RegExp && !pattern.test(value)) // 正则校验
     ) {
       tips = message
-    } else if (!isEmpty && typeof validate === 'function') { // 自定义校验函数
+    } else if (!isEmpty && typeof validate === 'function') {
+      // 自定义校验函数
       const res = validate(value, target)
-      tips = typeof res === 'string' ? res : (!res ? message : null)
+      if (typeof res === 'string') {
+        tips = res
+      } else {
+        tips = !res ? message : null
+      }
     }
 
     results = tips ? results : { ...results, [key]: value }
     // 错误
     errors = tips ? { ...errors, [key]: tips } : errors
-  }
+  })
 
   errors = new Errors(errors)
   if (typeof callback === 'function') {
-    errors.hasError() ? callback(errors) : callback(false, results)
+    if (errors.hasError()) callback(errors)
+    else callback(false, results)
   }
 
   return errors

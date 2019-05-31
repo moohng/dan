@@ -32,5 +32,8 @@ var validator = require('@moohng/dan/validator)
 **浏览器**
 
 ```html
-<script src="dist/dan.mini.js"></script>
+<!-- 指定版本号 -->
+<script src=//cdn.jsdelivr.net/gh/moohng/dan@1.3.2/dist/dan.mini.js></script>
+<!-- 使用最新版本 -->
+<script src=//cdn.jsdelivr.net/npm/@moohng/dan/dist/dan.mini.js></script>
 ```

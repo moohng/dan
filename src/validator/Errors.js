@@ -1,10 +1,7 @@
 class Errors {
-
   constructor(errors = {}) {
     Object.assign(this, errors)
   }
-
-  get errors() {}
 
   hasError() {
     return Object.keys(this).length > 0
@@ -17,7 +14,6 @@ class Errors {
   firstKey(index = 1) {
     return Object.keys(this)[index - 1]
   }
-
 }
 
 export default Errors
