@@ -12,13 +12,16 @@
     "build:mini": "rollup -c config/rollup.config.prod.js",
     "lint": "eslint --ext .js src --fix",
     "precommit": "lint-staged",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "lint-staged": {
     "src/**/*.js": [
       "eslint --fix",
       "git add"
     ]
+  },
+  "jest": {
+    "testRegex": "test/.*.test.jsx?$"
   },
   "keywords": [
     "util",
@@ -38,6 +41,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.3",
     "husky": "^2.3.0",
+    "jest": "^24.8.0",
     "lint-staged": "^8.1.7",
     "rollup": "^1.12.5",
     "rollup-plugin-babel": "^4.3.2",

@@ -68,10 +68,11 @@ export default function validator(target, rules, callback) {
     if (required && isEmpty) {
       tips = typeof required === 'string' ? required : `请输入${alias}`
     } else if (
-      (!isEmpty && (length && value.length !== length)) // 长度校验
-      || (min && typeof /^\d+$/.test(value) ? value < min : value.length < min) // 最小值校验
-      || (max && typeof /^\d+$/.test(value) ? value > max : value.length > max) // 最大值校验
-      || (pattern && pattern instanceof RegExp && !pattern.test(value)) // 正则校验
+      !isEmpty
+      && ((length && value.length !== length) // 长度校验
+      || (min && (/^\d+$/.test(value) ? value < min : value.length < min)) // 最小值校验
+      || (max && (/^\d+$/.test(value) ? value > max : value.length > max)) // 最大值校验
+      || (pattern && pattern instanceof RegExp && !pattern.test(value))) // 正则校验
     ) {
       tips = message
     } else if (!isEmpty && typeof validate === 'function') {
