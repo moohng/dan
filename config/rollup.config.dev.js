@@ -29,6 +29,7 @@ export default args => {
       {
         dir: 'lib',
         entryFileNames: '[name].js',
+        chunkFileNames: '[name].js',
         format: 'cjs',
         name: 'dan',
         exports: 'auto',

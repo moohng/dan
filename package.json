@@ -20,14 +20,15 @@
       "git add"
     ]
   },
-  "jest": {
-    "testRegex": "test/.*.test.jsx?$"
-  },
   "keywords": [
     "util",
     "utils"
   ],
-  "files": ["lib/", "dist", "src"],
+  "files": [
+    "lib/",
+    "dist",
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:moohng/dan.git"
@@ -38,6 +39,7 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.3",

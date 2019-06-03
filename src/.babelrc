@@ -1,7 +1,11 @@
+// 优先使用 目录下的配置，只识别 .babelrc
 {
   "presets": [
-    ["@babel/env", {
-      "modules": false
-    }],
-  ],
+    [
+      "@babel/preset-env",
+      {
+        "modules": false
+      }
+    ]
+  ]
 }
