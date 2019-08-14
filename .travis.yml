@@ -1,0 +1,21 @@
+language: node_js
+node_js: stable
+cache: npm
+
+install:
+  - npm install
+
+script:
+  - echo "NPM Deploying Started ..."
+  - npm version
+  - npm run build
+  - npm run build:mini
+  - echo "NPM Building Finished !!!"
+
+deploy:
+  provider: npm
+  email: moohng@126.com
+  api_key: "$NPM_TOKEN"
+  skip_cleanup: true
+  on:
+    tags: true
