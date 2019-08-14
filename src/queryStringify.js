@@ -6,7 +6,7 @@ export default function queryStringify(query) {
     }
     if (Array.isArray(val)) {
       if (!val.length) return s
-      const tempS = val.map(v => `${key}=${v}`).join('&')
+      const tempS = val.filter(v => v != null).map(v => `${key}=${v}`).join('&')
       return `${s}&${tempS}`
     }
     return `${s}&${key}=${val}`

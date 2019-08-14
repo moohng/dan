@@ -12,9 +12,15 @@ export default args => {
   const inputEntries = entries.reduce((res, dir) => {
     const filePath = path.join(entryPath, dir)
     const stats = fs.statSync(filePath)
+    console.log('file path', filePath)
     // 是文件
-    if (stats.isFile() && dir === 'index.js') {
-      return { ...res, dan: filePath }
+    if (stats.isFile()) {
+      if (dir === 'index.js') {
+        return { ...res, dan: filePath }
+      }
+      if (/(.+)\.js$/.test(dir)) {
+        return { ...res, [RegExp.$1]: filePath }
+      }
     }
     // 是目录
     if (stats.isDirectory()) {

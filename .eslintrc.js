@@ -20,5 +20,6 @@ module.exports = {
     semi: ['error', 'never'],
     'max-len': ['error', 120],
     'arrow-parens': 0,
+    'no-param-reassign': 0,
   },
 }
