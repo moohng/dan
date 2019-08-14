@@ -2,21 +2,18 @@ language: node_js
 node_js: stable
 cache: npm
 
-install:
-  - npm install
-
 script:
-  - echo "NPM Deploying Started ..."
-  - npm version
-  - npm test
+  - echo "Running tests against $(node -v) ..."
   - npm run build
   - npm run build:mini
-  - echo "NPM Building Finished !!!"
+  - npm test
 
 deploy:
   provider: npm
   email: moohng@126.com
-  api_key: "$NPM_TOKEN"
+  api_key: $NPM_TOKEN
   skip_cleanup: true
   on:
     tags: true
+
+
