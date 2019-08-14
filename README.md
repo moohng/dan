@@ -1,5 +1,7 @@
 # Validator
 
+[![Build Status](https://travis-ci.org/moohng/dan.svg?branch=master)](https://travis-ci.org/moohng/dan)
+
 各种实用工具函数集合
 
 ## 安装

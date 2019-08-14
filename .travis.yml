@@ -8,6 +8,7 @@ install:
 script:
   - echo "NPM Deploying Started ..."
   - npm version
+  - npm test
   - npm run build
   - npm run build:mini
   - echo "NPM Building Finished !!!"
