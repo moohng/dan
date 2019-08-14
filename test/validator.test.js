@@ -1,4 +1,4 @@
-const validator = require('../lib/validator')
+import validator from '../lib/validator'
 
 it('validator', () => {
   const targetObj = {
