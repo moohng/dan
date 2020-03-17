@@ -70,8 +70,8 @@ export default function validator(target, rules, callback) {
     } else if (
       !isEmpty
       && ((length && value.length !== length) // 长度校验
-      || (min && (/^\d+$/.test(value) ? value < min : value.length < min)) // 最小值校验
-      || (max && (/^\d+$/.test(value) ? value > max : value.length > max)) // 最大值校验
+      || (min && (!Number.isNaN(+value) ? value < min : value.length < min)) // 最小值校验
+      || (max && (!Number.isNaN(+value) ? value > max : value.length > max)) // 最大值校验
       || (pattern && pattern instanceof RegExp && !pattern.test(value))) // 正则校验
     ) {
       tips = message
