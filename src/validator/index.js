@@ -59,10 +59,26 @@ export default function validator(target, rules, callback) {
       trim = true,
       min = 0,
       max = 0,
-      length = 0,
     } = rule
     // 去掉字符串首位空格
     if (trim && typeof value === 'string') value = value.trim()
+
+    let { length = 0 } = rule
+    let minLength = 0
+    let maxLength = 0
+    if (/[[{].*[\]}]/.test(length)) {
+      length.match(/\d+/g, (matched) => {
+        if (matched) {
+          minLength = matched[0] || 0
+          maxLength = matched[1] || 0
+        }
+      })
+      length = 0
+    } else if (Array.isArray(length)) {
+      minLength = length[0] || 0
+      maxLength = length[1] || 0
+      length = 0
+    }
 
     let tips = null
     if (required && isEmpty) {
@@ -70,8 +86,10 @@ export default function validator(target, rules, callback) {
     } else if (
       !isEmpty
       && ((length && value.length !== length) // 长度校验
-      || (min && (!Number.isNaN(+value) ? value < min : value.length < min)) // 最小值校验
-      || (max && (!Number.isNaN(+value) ? value > max : value.length > max)) // 最大值校验
+      || (min && value < min) // 最小值校验
+      || (max && value > max) // 最大值校验
+      || (minLength && value.length < minLength) // 最小长度校验
+      || (maxLength && value.length > maxLength) // 最大长度校验
       || (pattern && pattern instanceof RegExp && !pattern.test(value))) // 正则校验
     ) {
       tips = message
