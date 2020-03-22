@@ -7,6 +7,8 @@ import decimalFormat from './decimalFormat'
 import decimalPadEnd from './decimalPadEnd'
 import timerFormat from './timerFormat'
 import moneyFormat from './moneyFormat'
+import cut from './cut'
+import round from './round'
 
 export {
   validator,
@@ -17,6 +19,8 @@ export {
   decimalFormat,
   decimalPadEnd,
   timerFormat,
+  cut,
+  round,
 }
 
 export default {
@@ -28,4 +32,6 @@ export default {
   decimalFormat,
   decimalPadEnd,
   moneyFormat,
+  cut,
+  round,
 }
