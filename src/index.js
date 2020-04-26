@@ -9,6 +9,9 @@ import timerFormat from './timerFormat'
 import moneyFormat from './moneyFormat'
 import cut from './cut'
 import round from './round'
+import copy from './copy'
+import es6tpl from './es6tpl'
+import acc from './acc'
 
 export {
   validator,
@@ -21,6 +24,9 @@ export {
   timerFormat,
   cut,
   round,
+  copy,
+  es6tpl,
+  acc,
 }
 
 export default {
@@ -34,4 +40,7 @@ export default {
   moneyFormat,
   cut,
   round,
+  copy,
+  es6tpl,
+  acc,
 }
