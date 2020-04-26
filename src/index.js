@@ -3,9 +3,9 @@ import queryStringify from './queryStringify'
 import merge from './merge'
 import queryParse from './queryParse'
 import dateFormat from './dateFormat'
-import decimalFormat from './decimalFormat'
 import decimalPadEnd from './decimalPadEnd'
 import timerFormat from './timerFormat'
+import splitFormat from './splitFormat'
 import moneyFormat from './moneyFormat'
 import cut from './cut'
 import round from './round'
@@ -19,9 +19,10 @@ export {
   merge,
   queryParse,
   dateFormat,
-  decimalFormat,
   decimalPadEnd,
   timerFormat,
+  splitFormat,
+  moneyFormat,
   cut,
   round,
   copy,
@@ -35,9 +36,10 @@ export default {
   merge,
   queryParse,
   dateFormat,
-  decimalFormat,
   decimalPadEnd,
+  splitFormat,
   moneyFormat,
+  timerFormat,
   cut,
   round,
   copy,

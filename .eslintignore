@@ -1,4 +1,5 @@
 dist/
 lib/
 config/
+test/
 *.config.js

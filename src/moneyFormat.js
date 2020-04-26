@@ -1,4 +1,7 @@
 import splitFormat from './splitFormat'
+import cut from './cut'
+import round from './round'
+import decimalPadEnd from './decimalPadEnd'
 
 /**
  * 格式化金额，按千分位以逗号分隔
@@ -9,19 +12,18 @@ import splitFormat from './splitFormat'
 export default function moneyFormat(value, precision, isCut) {
   const num = +value
   if (Number.isNaN(num)) return value
-  const [integer, float = 0] = String(num).split('.')
+  const integer = String(num).split('.')[0]
   // 处理整数部分
   const formatedInteger = splitFormat(integer, { separator: ',', reverse: true })
   // 处理小数部分
+  let float = (num - Number(integer))
   if (typeof precision === 'number') {
-    let formatedFloat = parseFloat(`0.${float}`).toFixed(isCut ? precision + 1 : precision).split('.')[1]
-    if (isCut) {
-      formatedFloat = formatedFloat.substr(0, precision)
-    }
+    float = isCut ? cut(float, precision) : round(float, precision)
+    const formatedFloat = decimalPadEnd(float, precision).split('.')[1]
     return `${formatedInteger}.${formatedFloat}`
   }
   if (float) {
-    return `${formatedInteger}.${float}`
+    return `${formatedInteger}.${float.split('.')[1]}`
   }
   return formatedInteger
 }

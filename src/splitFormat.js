@@ -5,7 +5,7 @@
  * @param {String} separator 分隔符
  * @param {Boolean} reverse 是否反向（从右到左）
  */
-export default function formatSplit(value, options) {
+export default function splitFormat(value, options) {
   if (typeof value !== 'number' && typeof value !== 'string') return ''
   let per = 3
   let separator = ' '

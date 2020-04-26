@@ -3,12 +3,13 @@
  * @param {date} date Date
  * @param {stirng} fmt 格式化
  */
-export default function dateFormat(date, fmt) {
+export default function dateFormat(date, fmt = 'yyyy-MM-dd hh:mm:ss') {
+  date = new Date(date)
   const obj = {
-    'y{1,4}': date.getFullYear(),
+    '[yY]{1,4}': date.getFullYear(),
     'M+': date.getMonth() + 1,
-    'd+': date.getDate(),
-    'h+': date.getHours(),
+    '[Dd]+': date.getDate(),
+    '[Hh]+': date.getHours(),
     'm+': date.getMinutes(),
     's+': date.getSeconds(),
   }
