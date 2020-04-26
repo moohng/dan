@@ -12,18 +12,18 @@ import decimalPadEnd from './decimalPadEnd'
 export default function moneyFormat(value, precision, isCut) {
   const num = +value
   if (Number.isNaN(num)) return value
-  const integer = String(num).split('.')[0]
+  const [integer, float] = String(num).split('.')
   // 处理整数部分
   const formatedInteger = splitFormat(integer, { separator: ',', reverse: true })
   // 处理小数部分
-  let float = (num - Number(integer))
   if (typeof precision === 'number') {
-    float = isCut ? cut(float, precision) : round(float, precision)
-    const formatedFloat = decimalPadEnd(float, precision).split('.')[1]
+    let floatStr = float ? Number([0, float].join('.')) : 0
+    floatStr = isCut ? cut(floatStr, precision) : round(floatStr, precision)
+    const formatedFloat = decimalPadEnd(floatStr, precision).split('.')[1]
     return `${formatedInteger}.${formatedFloat}`
   }
   if (float) {
-    return `${formatedInteger}.${float.split('.')[1]}`
+    return `${formatedInteger}.${float}`
   }
   return formatedInteger
 }
