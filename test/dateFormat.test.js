@@ -1,4 +1,4 @@
-const dateFormat = require('../lib/dateFormat')
+import dateFormat from '../src/dateFormat'
 
 it('dateFormat', () => {
   const date = new Date(2020, 10, 22)

@@ -1,4 +1,4 @@
-const moneyFormat = require('../lib/moneyFormat')
+import moneyFormat from '../src/moneyFormat'
 
 it('moneyFormat', () => {
   const num = 1234567.4050006

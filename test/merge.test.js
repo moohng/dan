@@ -1,4 +1,4 @@
-const merge = require('../lib/merge')
+import merge from '../src/merge'
 
 it('merge', () => {
   const a = {

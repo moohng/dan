@@ -1,4 +1,4 @@
-const querystringify = require('../lib/querystringify')
+import querystringify from '../src/querystringify'
 
 it('querystringify', () => {
   const query = {

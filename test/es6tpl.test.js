@@ -1,4 +1,4 @@
-const es6tpl = require('../lib/es6tpl')
+import es6tpl from '../src/es6tpl'
 
 it('es6tpl', () => {
   expect(es6tpl('Hello ${name}', { name: 'World' })).toBe('Hello World')

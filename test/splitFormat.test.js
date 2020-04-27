@@ -1,4 +1,4 @@
-const splitFormat = require('../lib/splitFormat')
+import splitFormat from '../src/splitFormat'
 
 it('splitFormat', () => {
   const cardNo = '6217002940000643352'

@@ -1,4 +1,4 @@
-const acc = require('../lib/acc')
+import acc from '../src/acc'
 
 it('acc', () => {
   expect(acc.add(0.1, 0.2)).toBe(0.3)

@@ -1,4 +1,4 @@
-const round = require('../lib/round')
+import round from '../src/round'
 
 it('round', () => {
   expect(round(12.3330)).toBe(12.33)

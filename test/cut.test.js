@@ -1,4 +1,4 @@
-const cut = require('../lib/cut')
+import cut from '../src/cut'
 
 it('cut', () => {
   expect(cut(12.3330)).toBe(12.33)

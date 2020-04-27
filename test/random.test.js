@@ -1,4 +1,4 @@
-const random = require('../lib/random')
+import random from '../src/random'
 
 
 it('random', () => {
