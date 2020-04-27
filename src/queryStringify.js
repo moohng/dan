@@ -1,14 +1,41 @@
-export default function queryStringify(query) {
-  return Object.keys(query).reduce((s, key) => {
-    const val = query[key]
-    if (val == null) {
-      return s
+import encode from './encode'
+
+/**
+ * 将query对象转成字符串
+ * @param {object} query query对象
+ * @param {string} prefix 前缀
+ */
+export default function querystringify(query, prefix) {
+  prefix = prefix || ''
+  if (typeof prefix !== 'string') {
+    prefix = '?'
+  }
+  const pairs = []
+
+  function assign(k, v) {
+    if (k !== null && v !== null) {
+      pairs.push(`${k}=${v}`)
     }
+  }
+
+  Object.keys(query).forEach(key => {
+    let val = query[key]
+    if (val === null || val === undefined || Number.isNaN(val)) {
+      val = ''
+    }
+
+    key = encode(key)
+
     if (Array.isArray(val)) {
-      if (!val.length) return s
-      const tempS = val.filter(v => v != null).map(v => `${key}=${v}`).join('&')
-      return `${s}&${tempS}`
+      val.forEach(v => {
+        v = encode(v)
+        assign(key, v)
+      })
+    } else {
+      val = encode(val)
+      assign(key, val)
     }
-    return `${s}&${key}=${val}`
-  }, '').slice(1)
+  })
+
+  return pairs.length ? prefix + pairs.join('&') : ''
 }

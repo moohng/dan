@@ -1,7 +1,7 @@
 import validator from './validator'
-import queryStringify from './queryStringify'
+import querystringify from './querystringify'
 import merge from './merge'
-import queryParse from './queryParse'
+import querystring from './querystring'
 import dateFormat from './dateFormat'
 import decimalPadEnd from './decimalPadEnd'
 import timerFormat from './timerFormat'
@@ -12,12 +12,14 @@ import round from './round'
 import copy from './copy'
 import es6tpl from './es6tpl'
 import acc from './acc'
+import encode from './encode'
+import decode from './decode'
 
 export {
   validator,
-  queryStringify,
+  querystringify,
   merge,
-  queryParse,
+  querystring,
   dateFormat,
   decimalPadEnd,
   timerFormat,
@@ -28,13 +30,15 @@ export {
   copy,
   es6tpl,
   acc,
+  encode,
+  decode,
 }
 
 export default {
   validator,
-  queryStringify,
+  querystringify,
   merge,
-  queryParse,
+  querystring,
   dateFormat,
   decimalPadEnd,
   splitFormat,
@@ -45,4 +49,6 @@ export default {
   copy,
   es6tpl,
   acc,
+  encode,
+  decode,
 }
