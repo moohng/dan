@@ -14,6 +14,8 @@ import es6tpl from './es6tpl'
 import acc from './acc'
 import encode from './encode'
 import decode from './decode'
+import unique from './unique'
+import random from './random'
 
 export {
   validator,
@@ -32,6 +34,8 @@ export {
   acc,
   encode,
   decode,
+  unique,
+  random,
 }
 
 export default {
@@ -51,4 +55,6 @@ export default {
   acc,
   encode,
   decode,
+  unique,
+  random,
 }
