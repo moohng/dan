@@ -5,22 +5,28 @@
  */
 export default function dateFormat(date, fmt = 'yyyy-MM-dd hh:mm:ss') {
   date = new Date(date)
-  const obj = {
-    '[yY]{1,4}': date.getFullYear(),
-    'M+': date.getMonth() + 1,
-    '[Dd]+': date.getDate(),
-    '[Hh]+': date.getHours(),
-    'm+': date.getMinutes(),
-    's+': date.getSeconds(),
+  const y = date.getFullYear()
+  // 不合法日期处理
+  if (Number.isNaN(y)) {
+    return fmt.replace(/YYYY|yyyy|MM|DD|dd|HH|hh|mm|ss/g, '--')
   }
-
-  let result = fmt
-  Object.keys(obj).forEach(exp => {
-    if (new RegExp(`(${exp})`).test(fmt)) {
-      const res = obj[exp].toString()
-      const s = RegExp.$1
-      result = result.replace(s, `0000${res}`.substr(res.length + 4 - s.length))
-    }
+  let m = date.getMonth() + 1
+  m = m < 10 ? `0${m}` : m
+  let d = date.getDate()
+  d = d < 10 ? `0${d}` : d
+  let h = date.getHours()
+  h = h < 10 ? `0${h}` : h
+  let minute = date.getMinutes()
+  minute = minute < 10 ? `0${minute}` : minute
+  let second = date.getSeconds()
+  second = second < 10 ? `0${second}` : second
+  return fmt.replace(/YYYY|yyyy|MM|DD|dd|HH|hh|mm|ss/g, match => {
+    if (match === 'YYYY' || match === 'yyyy') return y
+    if (match === 'MM') return m
+    if (match === 'DD' || match === 'dd') return d
+    if (match === 'HH' || match === 'hh') return h
+    if (match === 'mm') return minute
+    if (match === 'ss') return second
+    return ''
   })
-  return result
 }
