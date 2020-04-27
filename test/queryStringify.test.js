@@ -1,10 +1,10 @@
-const queryStringify = require('../lib/queryStringify')
+const querystringify = require('../lib/querystringify')
 
-it('queryStringify', () => {
+it('querystringify', () => {
   const query = {
     name: 'Kevin',
     age: 108,
     love: ['girl', 'beautifull girl'],
   }
-  expect(queryStringify(query)).toBe('name=Kevin&age=108&love=girl&love=beautifull%20girl')
+  expect(querystringify(query)).toBe('name=Kevin&age=108&love=girl&love=beautifull%20girl')
 })
