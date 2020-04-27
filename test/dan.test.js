@@ -1,4 +1,4 @@
-var dan = require('../lib/dan')
+const dan = require('../lib/dan')
 
 it('dan', () => {
   const num = 1234.123456
