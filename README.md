@@ -1,6 +1,18 @@
-# Validator
+<h1 align="center">dan.js</h1>
 
-[![Build Status](https://travis-ci.org/moohng/dan.svg?branch=master)](https://travis-ci.org/moohng/dan)
+<p align="center">
+  <img alt="Node.js CI" src="https://github.com/moohng/dan/workflows/Node.js%20CI/badge.svg">
+  <img alt="Node.js Package" src="https://github.com/moohng/dan/workflows/Node.js%20Package/badge.svg">
+</p>
+
+<p align="center">
+  <img alt="Travis (.org)" src="https://img.shields.io/travis/moohng/dan">
+  <img alt="Codecov" src="https://img.shields.io/codecov/c/github/moohng/dan?token=123">
+  <img alt="npm" src="https://img.shields.io/npm/dw/@moohng/dan">
+  <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/moohng/dan">
+  <img alt="npm" src="https://img.shields.io/npm/v/@moohng/dan">
+  <img alt="GitHub" src="https://img.shields.io/github/license/moohng/dan">
+</p>
 
 各种实用工具函数集合：
 
@@ -17,9 +29,11 @@
 - [moneyFormat](src/moneyFormat.js)
 - [querystring](src/querystring.js)
 - [querystringify](src/querystringify.js)
+- [random](src/random.js)
 - [round](src/round.js)
 - [splitFormat](src/splitFormat.js)
 - [timerFormat](src/timerFormat.js)
+- [unique](src/unique.js)
 
 ## 安装
 
