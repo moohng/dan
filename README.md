@@ -55,7 +55,7 @@ $ yarn add @moohng/dan
 import * as dan from '@moohng/dan'
 // 单个引入
 import { validator } from '@moohng/dan'
-import validator from '@moohng/dan/validator'
+import validator from '@moohng/dan/src/validator'
 ```
 
 ### CommonJS
@@ -63,7 +63,7 @@ import validator from '@moohng/dan/validator'
 ```js
 var dan = require('@moohng/dan')
 // 推荐使用
-var validator = require('@moohng/dan/validator')
+var validator = require('@moohng/dan/lib/validator')
 ```
 
 ### 浏览器
