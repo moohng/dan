@@ -1,13 +1,14 @@
-import path from 'path'
-import fs from 'fs'
-import serve from 'rollup-plugin-serve'
-import clear from 'rollup-plugin-clear'
+const path = require('path')
+const fs = require('fs')
+const serve = require('rollup-plugin-serve')
+const clear = require('rollup-plugin-clear')
+const { terser } = require('rollup-plugin-terser')
 
-import baseConfig from './rollup.config'
+const baseConfig = require('./rollup.config')
 
 const entryPath = path.resolve('src')
 
-export default args => {
+module.exports = args => {
   const entries = fs.readdirSync(entryPath)
   const inputEntries = entries.reduce((res, dir) => {
     const filePath = path.join(entryPath, dir)
@@ -38,12 +39,12 @@ export default args => {
         chunkFileNames: '[name].js',
         format: 'cjs',
         name: 'dan',
-        exports: 'auto',
       },
     ],
   }
 
   config.plugins.push(...[
+    terser(),
     clear({
       targets: ['lib'],
     }),

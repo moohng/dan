@@ -37,24 +37,3 @@ export {
   unique,
   random,
 }
-
-export default {
-  validator,
-  querystringify,
-  merge,
-  querystring,
-  dateFormat,
-  decimalPadEnd,
-  splitFormat,
-  moneyFormat,
-  timerFormat,
-  cut,
-  round,
-  copy,
-  es6tpl,
-  acc,
-  encode,
-  decode,
-  unique,
-  random,
-}
