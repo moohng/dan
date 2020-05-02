@@ -1,33 +1,13 @@
-const path = require('path')
-const fs = require('fs')
 const serve = require('rollup-plugin-serve')
 const clear = require('rollup-plugin-clear')
 const { terser } = require('rollup-plugin-terser')
 
 const baseConfig = require('./rollup.config')
+const loadEntries = require('../build/loadEntries')
 
-const entryPath = path.resolve('src')
 
 module.exports = args => {
-  const entries = fs.readdirSync(entryPath)
-  const inputEntries = entries.reduce((res, dir) => {
-    const filePath = path.join(entryPath, dir)
-    const stats = fs.statSync(filePath)
-    console.log('file path', filePath)
-    // 是文件
-    if (stats.isFile()) {
-      if (dir === 'index.js') {
-        return { ...res, dan: filePath }
-      }
-      if (/(.+)\.js$/.test(dir)) {
-        return { ...res, [RegExp.$1]: filePath }
-      }
-    }
-    // 是目录
-    if (stats.isDirectory()) {
-      return { ...res, [dir]: path.join(filePath, 'index.js') }
-    }
-  }, {})
+  const inputEntries = loadEntries().reduce((res, { name, input }) => ({ ...res, [name]: input }), {})
 
   const config = {
     ...baseConfig,
