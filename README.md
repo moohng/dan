@@ -90,8 +90,10 @@ $ yarn dist
 
 ### 发布
 
-该项目通过 `Travis` 自动编译和发布到 `npm` 平台
+~~该项目通过 `Travis` 自动编译和发布到 `npm` 平台~~
 
-- 通过 `npm version patch` 增加版本号
-- `git push` 到 GitHub 仓库
-- 通过 GitHub 的 release 发版，会触发 Travis 平台执行编译和测试指令，通过之后会自动 publish 到 npm 平台
+- ~~通过 `npm version patch` 增加版本号~~
+- ~~`git push` 到 GitHub 仓库~~
+- ~~通过 GitHub 的 release 发版，会触发 Travis 平台执行编译和测试指令，通过之后会自动 publish 到 npm 平台~~
+
+项目使用 github workflows 自动编译检查和发布到 npm 平台

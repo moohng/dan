@@ -6,11 +6,10 @@
   "module": "src/index.js",
   "browser": "dist/dan.min.js",
   "scripts": {
-    "server": "live-server --no-browser --watch=demo,dist",
-    "dev": "rollup -c config/rollup.config.dev.js -w --server",
-    "watch": "rollup -c config/rollup.config.dev.js -w",
-    "lib": "rollup -c config/rollup.config.dev.js",
-    "dist": "node build/build.dist.js",
+    "serve": "live-server --no-browser --watch=demo,dist",
+    "build": "node build/build.js",
+    "build:dist": "node build/build.js dist",
+    "build:lib": "node build/build.js lib",
     "lint": "eslint --ext .js src --fix",
     "precommit": "lint-staged",
     "test": "jest"
@@ -23,10 +22,14 @@
   },
   "keywords": [
     "util",
-    "utils"
+    "utils",
+    "validate",
+    "format",
+    "query",
+    "date"
   ],
   "files": [
-    "lib/",
+    "lib",
     "dist",
     "src"
   ],
@@ -60,7 +63,6 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-serve": "^1.0.1",
     "rollup-plugin-terser": "^5.3.0"
   },
   "babel": {
