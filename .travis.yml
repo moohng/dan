@@ -4,8 +4,7 @@ cache: npm
 
 script:
   - echo "Running tests against $(node -v) ..."
-  - npm run lib
-  - npm run dist
+  - npm run build
   - npm test
 
 # deploy:
