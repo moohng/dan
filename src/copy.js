@@ -1,6 +1,7 @@
 /**
  * 复制文本
  * @param {String} text 文本字符串
+ * @return {boolean} result 是否复制成功
  */
 export default function copy(text) {
   if (text == null) {

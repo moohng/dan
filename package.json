@@ -6,10 +6,10 @@
   "module": "src/index.js",
   "browser": "dist/dan.min.js",
   "scripts": {
-    "dev": "rollup -c config/rollup.config.dev.js -w --server",
-    "watch": "rollup -c config/rollup.config.dev.js -w",
-    "build": "rollup -c config/rollup.config.dev.js",
-    "build:mini": "rollup -c config/rollup.config.prod.js",
+    "serve": "live-server --no-browser --watch=demo,dist",
+    "build": "node build/build.js",
+    "build:dist": "node build/build.js dist",
+    "build:lib": "node build/build.js lib",
     "lint": "eslint --ext .js src --fix",
     "precommit": "lint-staged",
     "test": "jest"
@@ -22,7 +22,11 @@
   },
   "keywords": [
     "util",
-    "utils"
+    "utils",
+    "validate",
+    "format",
+    "query",
+    "date"
   ],
   "files": [
     "lib",
@@ -45,24 +49,27 @@
     "@babel/preset-env": "^7.9.5",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.4.0",
+    "del": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.20.2",
     "husky": "^4.2.5",
     "jest": "^24.8.0",
     "lint-staged": "^10.1.7",
+    "live-server": "^1.2.1",
     "rollup": "^2.7.2",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-clear": "^2.0.7",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-serve": "^1.0.1",
     "rollup-plugin-terser": "^5.3.0"
   },
   "babel": {
     "presets": [
-      ["@babel/preset-env"]
+      [
+        "@babel/preset-env"
+      ]
     ],
     "plugins": [
       "@babel/plugin-proposal-nullish-coalescing-operator",

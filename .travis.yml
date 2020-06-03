@@ -4,17 +4,17 @@ cache: npm
 
 script:
   - echo "Running tests against $(node -v) ..."
-  - npm run build
-  - npm run build:mini
+  - npm run lib
+  - npm run dist
   - npm test
 
-deploy:
-  provider: npm
-  email: moohng@126.com
-  api_key: $NPM_TOKEN
-  skip_cleanup: true
-  on:
-    tags: true
+# deploy:
+#   provider: npm
+#   email: moohng@126.com
+#   api_key: $NPM_TOKEN
+#   skip_cleanup: true
+#   on:
+#     tags: true
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

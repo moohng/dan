@@ -1,13 +1,14 @@
-import babel from 'rollup-plugin-babel'
-import resolve from 'rollup-plugin-node-resolve'
-// import commonjs from 'rollup-plugin-commonjs' // 与 Babel 插件冲突
-import json from 'rollup-plugin-json'
+const babel = require('rollup-plugin-babel')
+const resolve = require('rollup-plugin-node-resolve')
+// const commonjs = require('rollup-plugin-commonjs') // 与 Babel 插件冲突
+// const json = require('rollup-plugin-json')
+const { terser } = require('rollup-plugin-terser')
 
-export default {
+module.exports = {
   plugins: [
     resolve(),
     // commonjs(), // 兼容 commonjs 规范的第三方模块使用 ES6 方式导入
-    json(),
+    // json(),
     babel({
       babelrc: false, // 忽略项目中的babel配置文件，使用此配置
       presets: [
@@ -24,5 +25,6 @@ export default {
       ],
       exclude: 'node_modules/**',
     }),
+    terser(),
   ],
 }
