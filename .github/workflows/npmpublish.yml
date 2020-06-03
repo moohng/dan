@@ -16,8 +16,7 @@ jobs:
         with:
           node-version: 12
       - run: yarn
-      - run: yarn lib
-      - run: yarn dist
+      - run: yarn build
       - run: yarn test
 
   publish-npm:
