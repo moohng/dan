@@ -15,12 +15,11 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: yarn
-      - run: yarn build
+      - run: yarn --frozen-lockfile
       - run: yarn test
 
   publish-npm:
-    needs: build
+    # needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -28,13 +27,14 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      # - run: npm install
+      - run: yarn --frozen-lockfile
+      - run: yarn build --if-present
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
   publish-gpr:
-    needs: build
+    # needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -42,7 +42,8 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-      # - run: npm install
+      - run: yarn --frozen-lockfile
+      - run: yarn build --if-present
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
