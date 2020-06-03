@@ -1,6 +1,6 @@
 {
   "name": "@moohng/dan",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "js工具库",
   "main": "lib/dan.js",
   "module": "src/index.js",
@@ -25,7 +25,7 @@
     "utils"
   ],
   "files": [
-    "lib/",
+    "lib",
     "dist",
     "src"
   ],
