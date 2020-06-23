@@ -16,6 +16,7 @@ import encode from './encode'
 import decode from './decode'
 import unique from './unique'
 import random from './random'
+import sleep from './sleep'
 
 export {
   validator,
@@ -36,4 +37,5 @@ export {
   decode,
   unique,
   random,
+  sleep,
 }
