@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img alt="Travis (.org)" src="https://img.shields.io/travis/moohng/dan">
+  <!-- <img alt="Travis (.org)" src="https://img.shields.io/travis/moohng/dan"> -->
   <!-- <img alt="Codecov" src="https://img.shields.io/codecov/c/github/moohng/dan?token=123"> -->
   <img alt="npm" src="https://img.shields.io/npm/dw/@moohng/dan">
   <!-- <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/moohng/dan"> -->
@@ -34,6 +34,7 @@
 - [splitFormat](src/splitFormat.js) 字符串分割
 - [timerFormat](src/timerFormat.js) 时间戳转时分秒
 - [unique](src/unique.js) 数组去重
+- [sleep](src/sleep.js) 等待
 
 ## 安装
 
