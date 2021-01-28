@@ -1,4 +1,4 @@
-import dateFormat from '../src/dateFormat'
+import dateFormat from '../esm/dateFormat'
 
 it('dateFormat', () => {
   const date = new Date(2020, 10, 22)

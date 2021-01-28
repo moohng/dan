@@ -1,4 +1,4 @@
-import { round, cut } from '../src'
+import { round, cut } from '../esm'
 
 it('dan', () => {
   const num = 1234.123456

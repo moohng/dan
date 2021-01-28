@@ -1,4 +1,4 @@
-import round from '../src/round'
+import round from '../esm/round'
 
 it('round', () => {
   expect(round(12.3330)).toBe(12.33)

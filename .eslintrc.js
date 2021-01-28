@@ -5,21 +5,27 @@ module.exports = {
     es6: true,
     jest: true,
   },
-  extends: 'airbnb-base',
-  parser: 'babel-eslint',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    sourceType: 'module',
-  },
+  parser: '@typescript-eslint/parser',
+  // parserOptions: {
+  //   ecmaFeatures: {
+  //     jsx: true,
+  //   },
+  //   sourceType: 'module',
+  // },
+  plugins: [
+    '@typescript-eslint',
+  ],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
   rules: {
     indent: ['error', 2],
-    'linebreak-style': 0,
+    // 'linebreak-style': 0,
     quotes: ['error', 'single'],
-    semi: ['error', 'never'],
-    'max-len': ['error', 120],
-    'arrow-parens': 0,
-    'no-param-reassign': 0,
+    semi: ['error', 'always'],
+    // 'max-len': ['error', 120],
+    // 'arrow-parens': 0,
+    // 'no-param-reassign': 0,
   },
 }

@@ -1,0 +1,15 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "ESNext",
+    "declaration": true,
+    "declarationDir": "lib",
+    "emitDeclarationOnly": true,
+    "strict": true,
+    // "checkJs": true,
+    // "allowJs": true,
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"],
+}

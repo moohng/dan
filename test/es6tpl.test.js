@@ -1,4 +1,4 @@
-import es6tpl from '../src/es6tpl'
+import es6tpl from '../esm/es6tpl'
 
 it('es6tpl', () => {
   expect(es6tpl('Hello ${name}', { name: 'World' })).toBe('Hello World')

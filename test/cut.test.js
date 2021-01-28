@@ -1,4 +1,4 @@
-import cut from '../src/cut'
+import cut from '../esm/cut'
 
 it('cut', () => {
   expect(cut(12.3330)).toBe(12.33)
