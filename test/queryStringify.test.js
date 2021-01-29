@@ -1,4 +1,4 @@
-import querystringify from '../esm/querystringify'
+import querystringify from '../lib/querystringify'
 
 it('querystringify', () => {
   const query = {

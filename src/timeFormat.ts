@@ -5,7 +5,7 @@
  */
 export default function timeFormat(millisecond: number, format = 'hh:mm:ss'): string {
   millisecond = +millisecond;
-  if (Number.isNaN(millisecond)) {
+  if (isNaN(millisecond)) {
     throw new TypeError('millisecond 必须是一个数字');
   }
   const hours = Math.floor(millisecond / (1000 * 3600));

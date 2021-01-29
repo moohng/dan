@@ -1,4 +1,4 @@
-import unique from '../esm/unique'
+import unique from '../lib/unique'
 
 it('unique', () => {
   expect(unique([0, 3, 2, 3, 2, 3, 0])).toEqual([0, 3, 2])

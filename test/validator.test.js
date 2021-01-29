@@ -1,4 +1,4 @@
-import validator from '../esm/validator'
+import validator from '../lib/validator'
 
 it('validator', () => {
   const targetObj = {

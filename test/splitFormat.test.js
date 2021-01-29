@@ -1,4 +1,4 @@
-import splitFormat from '../esm/splitFormat'
+import splitFormat from '../lib/splitFormat'
 
 it('splitFormat', () => {
   const cardNo = '6217002940000643352'

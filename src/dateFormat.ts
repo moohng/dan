@@ -5,11 +5,11 @@
  */
 export default function dateFormat(date: string | number | Date, fmt = 'yyyy-MM-dd hh:mm:ss'): string {
   date = new Date(date);
-  const y = date.getFullYear();
   // 不合法日期处理
-  if (Number.isNaN(y)) {
+  if (date.toString() === 'Invalid Date') {
     return fmt.replace(/YYYY|yyyy|MM|DD|dd|HH|hh|mm|ss/g, '--');
   }
+  const y = date.getFullYear();
   let m: string | number = date.getMonth() + 1;
   m = m < 10 ? `0${m}` : m;
   let d: string | number = date.getDate();

@@ -1,4 +1,4 @@
-import merge from '../esm/merge'
+import merge from '../lib/merge'
 
 it('merge', () => {
   const a = {

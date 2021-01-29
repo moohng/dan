@@ -1,4 +1,4 @@
-import random from '../esm/random'
+import random from '../lib/random'
 
 
 it('random', () => {

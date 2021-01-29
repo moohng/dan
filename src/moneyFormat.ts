@@ -11,8 +11,10 @@ import decimalPadEnd from './decimalPadEnd';
  */
 export default function moneyFormat(value: string | number, precision: number, isCut: boolean): string | number {
   const num = +value;
-  if (Number.isNaN(num)) return value;
-  const [integer, float] = String(num).split('.');
+  if (isNaN(num)) return value;
+  const result = String(num).split('.');
+  const integer = result[0];
+  const float = result[1];
   // 处理整数部分
   const formattedInteger = splitFormat(integer, { separator: ',', reverse: true });
   // 处理小数部分

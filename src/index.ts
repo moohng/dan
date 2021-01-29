@@ -1,4 +1,4 @@
-// export { default as validator } from './validator';
+export { default as validator } from './validator/index';
 export { default as  querystringify } from './querystringify';
 export { default as  merge } from './merge';
 export { default as  querystring } from './querystring';

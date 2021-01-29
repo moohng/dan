@@ -1,4 +1,4 @@
-import moneyFormat from '../esm/moneyFormat'
+import moneyFormat from '../lib/moneyFormat'
 
 it('moneyFormat', () => {
   const num = 1234567.4050006

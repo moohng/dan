@@ -18,8 +18,10 @@ export default function querystringify(query: Query, prefix = ''): string {
     }
   }
 
-  Object.entries(query).forEach(([key, val]) => {
-    if (val === null || val === undefined || Number.isNaN(val)) {
+  Object.keys(query).forEach((key) => {
+    let val = query[key];
+
+    if (val === null || val === undefined || isNaN(+val)) {
       val = '';
     }
 

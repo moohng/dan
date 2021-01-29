@@ -70,7 +70,7 @@ class ErrorResult extends Array {
  * errors.first()       // 获取检验结果的第一个错误提示字符串    ------ 若带参数：指定第几个
  * errors.firstKey()    // 获取校验结果的第一个错误字段的key值   ------ 若带参数：指定第几个
  */
-export default function validator(target: Target, rules: Rule[], callback?: ResultCallback): ErrorResult {
+function validator(target: Target, rules: Rule[], callback?: ResultCallback): ErrorResult {
   if (!rules.length) {
     return new ErrorResult();
   }
@@ -156,3 +156,5 @@ export default function validator(target: Target, rules: Rule[], callback?: Resu
 
   return result;
 }
+
+export default validator;
