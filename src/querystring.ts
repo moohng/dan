@@ -1,7 +1,7 @@
 import decode from './decode';
 
 interface Query {
-  [key: string]: string | string[];
+  [key: string]: unknown;
 }
 
 /**
@@ -23,7 +23,7 @@ export default function querystring(qs = ''): Query {
     const key = decode(part[1]);
     const value = decode(part[2]);
     if (!(key === null || value == null)) {
-      result[key] = key in result ? ([] as string[]).concat(result[key], value) : value;
+      result[key] = key in result ? ([] as unknown[]).concat(result[key], value) : value;
       part = parser.exec(qs);
     }
   }

@@ -1,14 +1,12 @@
-type Target = Record<string, unknown>;
-
-interface Validate {
-  (value: Target[keyof Target], target: Target): boolean | string;
+interface Validate<T> {
+  (value: unknown, target: T): boolean | string;
 }
 
-interface Rule {
-  name: keyof Target;
+export interface Rule<T> {
+  name: keyof T;
   required?: boolean | string;
   pattern?: RegExp;
-  validate?: Validate;
+  validate?: Validate<T>;
   alias?: string;
   message?: string;
   trim?: boolean;
@@ -17,20 +15,20 @@ interface Rule {
   max?: number;
 }
 
-interface Result {
-  name: keyof Target;
+interface Result<T> {
+  name: keyof T;
   message: string;
 }
 
-interface ResultCallback {
-  (error?: boolean, result?: ErrorResult): void
+interface ResultCallback<T> {
+  (error?: boolean, result?: ErrorResult<T>): void
 }
 
 /**
  * 校验错误结果
  */
-class ErrorResult extends Array {
-  constructor(errors?: Result[]) {
+class ErrorResult<T> extends Array {
+  constructor(errors?: Result<T>[]) {
     super(errors?.length);
     errors && errors.forEach((item, index) => this[index] = item);
   }
@@ -70,16 +68,14 @@ class ErrorResult extends Array {
  * errors.first()       // 获取检验结果的第一个错误提示字符串    ------ 若带参数：指定第几个
  * errors.firstKey()    // 获取校验结果的第一个错误字段的key值   ------ 若带参数：指定第几个
  */
-function validator(target: Target, rules: Rule[], callback?: ResultCallback): ErrorResult {
+function validator<K extends Record<string, unknown>>(target: K, rules: Rule<K>[], callback?: ResultCallback<K>): ErrorResult<K> {
   if (!rules.length) {
     return new ErrorResult();
   }
 
-  const errors:  Result[] = []; // 错误结果
+  const errors:  Result<K>[] = []; // 错误结果
 
   rules.forEach(rule => {
-    // 规则
-    if (typeof rule === 'string') rule = { required: true, name: rule };
     // 输入值
     let value = target[rule.name];
     const isEmpty = (
@@ -103,7 +99,7 @@ function validator(target: Target, rules: Rule[], callback?: ResultCallback): Er
     } = rule;
     // 去掉字符串首位空格
     if (trim && typeof value === 'string') {
-      value = value.trim();
+      value = value.trim() as unknown as K[keyof K];
     }
 
     let { length = 0 } = rule;

@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "module": "lib/index.js",
   "browser": "dist/dan.min.js",
+  "type": "module",
   "scripts": {
     "serve": "live-server --no-browser --watch=demo,dist",
     "type-check": "tsc --noEmit",
@@ -58,6 +59,7 @@
     "@types/jest": "^26.0.20",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
+    "babel-jest": "^26.6.3",
     "del": "^5.1.0",
     "eslint": "^6.8.0",
     "husky": "^4.2.5",
@@ -83,7 +85,22 @@
       "@babel/plugin-proposal-nullish-coalescing-operator",
       "@babel/plugin-proposal-optional-chaining",
       "@babel/plugin-proposal-class-properties"
-    ]
+    ],
+    "env": {
+      "test": {
+        "presets": [
+          [
+            "@babel/preset-env",
+            {
+              "targets": {
+                "node": "current"
+              }
+            }
+          ],
+          "@babel/preset-typescript"
+        ]
+      }
+    }
   },
   "browserslist": [
     "last 1 version",

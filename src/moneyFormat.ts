@@ -9,7 +9,7 @@ import decimalPadEnd from './decimalPadEnd';
  * @param precision 精度
  * @param isCut 是否截取
  */
-export default function moneyFormat(value: string | number, precision: number, isCut: boolean): string | number {
+export default function moneyFormat(value: string | number, precision?: number, isCut?: boolean): string | number {
   const num = +value;
   if (isNaN(num)) return value;
   const result = String(num).split('.');

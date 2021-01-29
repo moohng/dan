@@ -1,7 +1,7 @@
 import encode from './encode';
 
 interface Query {
-  [key: string]: string | number | boolean;
+  [key: string]: unknown;
 }
 
 /**
@@ -12,7 +12,7 @@ interface Query {
 export default function querystringify(query: Query, prefix = ''): string {
   const pairs: string[] = [];
 
-  function assign(k: string, v: string) {
+  function assign(k: string, v: unknown) {
     if (k !== null && v !== null) {
       pairs.push(`${k}=${v}`);
     }
@@ -21,7 +21,7 @@ export default function querystringify(query: Query, prefix = ''): string {
   Object.keys(query).forEach((key) => {
     let val = query[key];
 
-    if (val === null || val === undefined || isNaN(+val)) {
+    if (val === null || val === undefined || (typeof val === 'number' && isNaN(val))) {
       val = '';
     }
 
@@ -32,7 +32,7 @@ export default function querystringify(query: Query, prefix = ''): string {
         assign(key, encode(v));
       });
     } else {
-      assign(key, encode(val.toString()));
+      assign(key, encode(String(val)));
     }
   });
 
