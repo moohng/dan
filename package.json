@@ -9,7 +9,7 @@
   "scripts": {
     "serve": "live-server --no-browser --watch=demo,dist",
     "type-check": "tsc --noEmit",
-    "build": "yarn build:types && yarn build:lib && build:dist",
+    "build": "yarn build:types && yarn build:lib && yarn build:dist",
     "build:types": "tsc --emitDeclarationOnly",
     "build:lib": "babel src -d lib -x \".ts,.tsx\"",
     "build:dist": "rollup -c rollup.config.js",
