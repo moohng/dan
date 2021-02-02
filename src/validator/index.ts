@@ -3,7 +3,7 @@ interface Validate<T> {
 }
 
 export interface Rule<T> {
-  name: keyof T;
+  key: keyof T;
   required?: boolean | string;
   pattern?: RegExp;
   validate?: Validate<T>;
@@ -16,7 +16,7 @@ export interface Rule<T> {
 }
 
 interface Result<T> {
-  name: keyof T;
+  key: keyof T;
   message: string;
 }
 
@@ -47,26 +47,23 @@ class ErrorResult<T> extends Array {
  * @param callback 结果回调函数（错误结果，通过的字段对象集合）
  * @returns 校验的结果
  * 校验规则模板:
- * const rules = {
- *   name: {                                           -------- 若为bool值，表示required；若为字符串，表示alias，且required为true
- *     alias: 'key的别名，比如：姓名',                   -------- 若无，则默认为key值
- *     required: '为空时要提示的字符串或true(必填)',      -------- 为bool值表示是否必填，为字符串表示true并提示该字符串
- *     pattern: /这里是正则表达式/,                      -------- 正则匹配校验
- *     length: 字符串长度,                              -------- 长度校验
- *     min: 字符串长度或数字最小值,                      -------- 最小值校验
- *     max: 字符串长度或数字最大值,                      -------- 最大值校验
- *     validate: '自定义校验函数(参数1：当前值，参数2：所有值的对象)'
- *                                                      -------- 返回 true 则校验通过，false 校验不通过（若返回字符串表示校验"不通过"，并且作为提示信息）
- *     message: '校验不通过的提示文字'                    -------- 校验不通过的提示文字，若无则提示默认文字
- *     trim: true                                       --------- 是否去掉字符串的首尾空格，默认为true
- *   },
- *   mobile: { ... }
+ * const rule = {
+ *   key: 'name',                                     -------- 待校验的字段名称
+ *   alias: 'key的别名，比如：姓名',                   -------- 若无，则默认为key值
+ *   required: '为空时要提示的字符串或true(必填)',      -------- 为bool值表示是否必填，为字符串表示true并提示该字符串
+ *   pattern: /这里是正则表达式/,                      -------- 正则匹配校验
+ *   length: 字符串长度,                              -------- 长度校验
+ *   min: 字符串长度或数字最小值,                      -------- 最小值校验
+ *   max: 字符串长度或数字最大值,                      -------- 最大值校验
+ *   validate: '自定义校验函数(参数1：当前值，参数2：所有值的对象)'
+ *                                                    -------- 返回 true 则校验通过，false 校验不通过（若返回字符串表示校验"不通过"，并且作为提示信息）
+ *   message: '校验不通过的提示文字'                    -------- 校验不通过的提示文字，若无则提示默认文字
+ *   trim: true                                       --------- 是否去掉字符串的首尾空格，默认为true
  * }
  * 校验结果模板:
- * const errors = { name: '姓名不能为空', mobile: '手机号码输入不正确' };
- * errors.hasError（）  // 校验是否出错
+ * const errors = [{ key: 'phone', message: '手机号码输入不正确' }];
+ * errors.hasError      // 校验是否出错
  * errors.first()       // 获取检验结果的第一个错误提示字符串    ------ 若带参数：指定第几个
- * errors.firstKey()    // 获取校验结果的第一个错误字段的key值   ------ 若带参数：指定第几个
  */
 function validator<K extends Record<string, unknown>>(target: K, rules: Rule<K>[], callback?: ResultCallback<K>): ErrorResult<K> {
   if (!rules.length) {
@@ -77,7 +74,7 @@ function validator<K extends Record<string, unknown>>(target: K, rules: Rule<K>[
 
   rules.forEach(rule => {
     // 输入值
-    let value = target[rule.name];
+    let value = target[rule.key];
     const isEmpty = (
       value === undefined
       || value === null
@@ -91,7 +88,7 @@ function validator<K extends Record<string, unknown>>(target: K, rules: Rule<K>[
       required,
       pattern,
       validate,
-      alias = rule.name,
+      alias = rule.key,
       message = `请输入正确的${alias}`,
       trim = true,
       min = 0,
@@ -142,7 +139,7 @@ function validator<K extends Record<string, unknown>>(target: K, rules: Rule<K>[
     }
     // 错误结果
     if (tips) {
-      errors.push({ name: rule.name, message: tips });
+      errors.push({ key: rule.key, message: tips });
     }
   });
 

@@ -1,11 +1,10 @@
 {
   "name": "@moohng/dan",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "js工具库",
   "main": "dist/dan.umd.js",
   "module": "lib/index.js",
-  "browser": "dist/dan.min.js",
-  "type": "module",
+  "types": "lib/index.d.ts",
   "scripts": {
     "serve": "live-server --no-browser --watch=demo,dist",
     "type-check": "tsc --noEmit",
@@ -33,8 +32,7 @@
   ],
   "files": [
     "lib",
-    "dist",
-    "src"
+    "dist"
   ],
   "repository": {
     "type": "git",

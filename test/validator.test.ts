@@ -7,8 +7,8 @@ it('validator', () => {
     height: '',
   }
   const rules: Rule<typeof targetObj>[] = [
-    { name: 'name', length: [1, 10] },
-    { name: 'age', validate:(val) => {
+    { key: 'name', length: [1, 10] },
+    { key: 'age', validate:(val) => {
         if (val < 30) {
           return '装嫩呢'
         }
@@ -16,7 +16,7 @@ it('validator', () => {
       },
     },
     {
-      name: 'height',
+      key: 'height',
       required: '身高必填哦'
     },
   ]
