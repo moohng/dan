@@ -1,4 +1,4 @@
-import { decimalPadEnd } from '../';
+import { decimalPadEnd } from '../lib';
 
 test('decimalPadEnd', () => {
   expect(decimalPadEnd(123, 4)).toBe('123.0000');
