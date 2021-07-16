@@ -21,7 +21,7 @@ interface Result<T> {
 }
 
 interface ResultCallback<T> {
-  (error?: boolean, result?: ErrorResult<T>): void
+  (error?: boolean, result?: ErrorResult<T>): void;
 }
 
 /**
@@ -89,7 +89,7 @@ function validator<K extends Record<string, unknown>>(target: K, rules: Rule<K>[
       pattern,
       validate,
       alias = rule.key,
-      message = `请输入正确的${alias}`,
+      message = `请输入正确的${String(alias)}`,
       trim = true,
       min = 0,
       max = 0,
@@ -112,7 +112,7 @@ function validator<K extends Record<string, unknown>>(target: K, rules: Rule<K>[
 
     if (isEmpty) {
       if (required) {
-        tips = typeof required === 'string' ? required : `请输入${alias}`;
+        tips = typeof required === 'string' ? required : `请输入${String(alias)}`;
       }
     } else {
       if (typeof value === 'string') {
@@ -151,3 +151,10 @@ function validator<K extends Record<string, unknown>>(target: K, rules: Rule<K>[
 }
 
 export default validator;
+
+export const Pattern = {
+  email: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+  phone: /^1\d{10}$/,
+  idCard: /^[1-9]\d{5}(19|20)\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/,
+  emoji: /[^\u0020-\u007E\u00A0-\u00BE\u2E80-\uA4CF\uF900-\uFAFF\uFE30-\uFE4F\uFF00-\uFFEF\u0080-\u009F\u2000-\u201f\u2026\u2022\u20ac\r\n]/,
+};
