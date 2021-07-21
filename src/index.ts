@@ -17,3 +17,4 @@ export { default as  unique } from './unique';
 export { default as  random } from './random';
 export { default as  sleep } from './sleep';
 export { default as  flat } from './flat';
+export { Base64 } from './Base64/index';
