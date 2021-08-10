@@ -27,16 +27,15 @@ interface ResultCallback<T> {
 /**
  * 校验错误结果
  */
-class ErrorResult<T> extends Array {
-  constructor(errors?: Result<T>[]) {
-    super(errors?.length);
-    errors && errors.forEach((item, index) => this[index] = item);
+class ErrorResult<T> {
+  constructor(private errors?: Result<T>[]) {}
+
+  get hasError(): boolean {
+    return (this.errors?.length ?? -1) > 0;
   }
 
-  readonly hasError: boolean = this.length > 0;
-
-  first(index = 0): string {
-    return this[index].message;
+  first(index = 0): string | undefined {
+    return this.errors?.[index]?.message;
   }
 }
 
