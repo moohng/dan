@@ -5,7 +5,7 @@ export default function flat<T>(arr: DeepArray<T>): T[] {
 
   arr.forEach(item => {
     if (Array.isArray(item)) {
-      result.push(...flat(item));
+      ([] as T[]).push.apply(result, flat(item));
     } else {
       result.push(item);
     }

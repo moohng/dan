@@ -17,12 +17,12 @@ export default function splitFormat(value: string | number, options: Options | n
   let separator = ' ';
   let reverse = false;
   if (typeof options === 'number') per = options;
-  if (typeof options === 'string') separator = options;
-  if (typeof options === 'boolean') reverse = options;
-  if (typeof options === 'object') {
-    per = options.per || per;
-    separator = options.separator || separator;
-    reverse = options.reverse || reverse;
+  else if (typeof options === 'string') separator = options;
+  else if (typeof options === 'boolean') reverse = options;
+  else {
+    per = options?.per || per;
+    separator = options?.separator || separator;
+    reverse = options?.reverse || reverse;
   }
   let newValue = String(value);
   if (!newValue) return newValue;
