@@ -5,7 +5,7 @@
     "declaration": true,
     "declarationDir": "lib",
     // "outFile": "types/index.d.ts",
-    "emitDeclarationOnly": true,
+    // "emitDeclarationOnly": true,
     "strict": true,
     // "checkJs": true,
     // "allowJs": true,

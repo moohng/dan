@@ -4,6 +4,8 @@ interface O {
   [key: string]: unknown
 }
 
+const isObject = (obj: unknown): boolean => Object.prototype.toString.call(obj) === '[object Object]';
+
 /**
  * 多个对象合并
  * @param args 待合并的对象
@@ -15,7 +17,7 @@ export default function merge(...args: O[]): O {
     if (Array.isArray(result[key]) && Array.isArray(val)) {
       // 数组合并
       result[key] = unique((result[key] as unknown[]).concat(val));
-    } else if (typeof result[key] === 'object' && typeof val === 'object') {
+    } else if (isObject(result[key]) && isObject(val)) {
       // 对象继续合并
       result[key] = merge(result[key] as O, val as O);
     } else {
