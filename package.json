@@ -1,6 +1,6 @@
 {
   "name": "@moohng/dan",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "js工具库",
   "main": "dist/dan.umd.js",
   "module": "lib/index.js",
