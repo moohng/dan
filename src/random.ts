@@ -3,7 +3,7 @@
  * @param args 1个参数表示生成随机字符串的长度，2个参数表示生成随机数的范围，第三个参数表示随机数是否为整数
  */
 export default function random(...args: [number?, number?, boolean?]): string | number {
-  if (args.length === 0 || args[0] === 0) {
+  if (args.length === 0 || (args.length === 1 && args[0] === 0)) {
     return Math.random();
   }
   if (args.length === 1) {
