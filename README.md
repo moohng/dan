@@ -18,23 +18,23 @@
 
 - ~~[acc](src/acc) 浮点数精确计算~~，推荐使用 [big.js](https://github.com/MikeMcl/big.js/)
 - [validator](src/validator) 字段校验
-- [copy](src/copy.js) 复制文本
-- [cut](src/cut.js) 截取小数位数
-- [decimalPadEnd](src/decimalPadEnd.js) 小数末尾补0
-- [es6tpl](src/es6tpl.js) es6字符串模板
-- [splitFormat](src/splitFormat.js) 字符串分割
-- [moneyFormat](src/moneyFormat.js) 金额格式化（千分位逗号隔开）
-- [random](src/random.js) 生成随机数/字符串
-- [round](src/round.js) 近似小数位数
-- [merge](src/merge.js) 对象深合并
-- [decode](src/decode.js) URI解码
-- [encode](src/encode.js) URI编码
-- [querystring](src/querystring.js) 解析query字符串到对象
-- [querystringify](src/querystringify.js) query对象字符串化
-- [dateFormat](src/dateFormat.js) 日期格式化
-- [timeFormat](src/timeFormat.js) 时间戳转时分秒
-- [unique](src/unique.js) 数组去重
-- [sleep](src/sleep.js) 等待
+- [copy](src/copy.ts) 复制文本
+- [cut](src/cut.ts) 截取小数位数
+- [decimalPadEnd](src/decimalPadEnd.ts) 小数末尾补0
+- [es6tpl](src/es6tpl.ts) es6字符串模板
+- [splitFormat](src/splitFormat.ts) 字符串分割
+- [moneyFormat](src/moneyFormat.ts) 金额格式化（千分位逗号隔开）
+- [random](src/random.ts) 生成随机数/字符串
+- [round](src/round.ts) 近似小数位数
+- [merge](src/merge.ts) 对象深合并
+- [decode](src/decode.ts) URI解码
+- [encode](src/encode.ts) URI编码
+- [querystring](src/querystring.ts) 解析query字符串到对象
+- [querystringify](src/querystringify.ts) query对象字符串化
+- [dateFormat](src/dateFormat.ts) 日期格式化
+- [timeFormat](src/timeFormat.ts) 时间戳转时分秒
+- [unique](src/unique.ts) 数组去重
+- [sleep](src/sleep.ts) 等待
 
 ## 安装
 
